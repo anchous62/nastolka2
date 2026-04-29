@@ -419,21 +419,34 @@
             numSpan.innerText = cell.id;
             div.appendChild(numSpan);
             
-            // ТОЛЬКО для вопросов, ловушек, бонусов и финиша показываем эмодзи
-            // Обычные клетки — пустые (без смайликов)
-            if (cell.type !== "normal") {
-                let emoji = "";
-                if(cell.type === "question") emoji = "❓";
-                else if(cell.type === "trap") emoji = "⚠️";
-                else if(cell.type === "bonus") emoji = "✨";
-                else if(cell.type === "finish") emoji = "🏁";
-                
+            // ⚠️ ВАЖНО: эмодзи показываем ТОЛЬКО для особых клеток
+            // Обычные клетки (normal) — остаются ПУСТЫМИ
+            if (cell.type === "question") {
                 const iconSpan = document.createElement("div");
-                iconSpan.innerText = emoji;
+                iconSpan.innerText = "❓";
+                iconSpan.style.fontSize = "1.1rem";
+                iconSpan.style.marginTop = "18px";
+                div.appendChild(iconSpan);
+            } else if (cell.type === "trap") {
+                const iconSpan = document.createElement("div");
+                iconSpan.innerText = "⚠️";
+                iconSpan.style.fontSize = "1.1rem";
+                iconSpan.style.marginTop = "18px";
+                div.appendChild(iconSpan);
+            } else if (cell.type === "bonus") {
+                const iconSpan = document.createElement("div");
+                iconSpan.innerText = "✨";
+                iconSpan.style.fontSize = "1.1rem";
+                iconSpan.style.marginTop = "18px";
+                div.appendChild(iconSpan);
+            } else if (cell.type === "finish") {
+                const iconSpan = document.createElement("div");
+                iconSpan.innerText = "🏁";
                 iconSpan.style.fontSize = "1.1rem";
                 iconSpan.style.marginTop = "18px";
                 div.appendChild(iconSpan);
             }
+            // normal клетки — НИЧЕГО не добавляем, они пустые
             
             if(cell.id === currentPosition && gameActive) {
                 const playerDiv = document.createElement("div");
@@ -454,7 +467,7 @@
         renderBoard();
     }
 
-    // НЕ ЗАБИРАЕМ ОЧКИ при неверном вводе — только просим ввести правильно
+    // НЕ ЗАБИРАЕМ ОЧКИ при неверном вводе
     function askQuestionSync(question, options) {
         while(true) {
             let answer = prompt(`${question}\n\n1️⃣ ${options[0]}\n2️⃣ ${options[1]}\n3️⃣ ${options[2]}\n\n👉 Введи номер ответа (1, 2 или 3):`);
@@ -469,7 +482,7 @@
                 return parseInt(answer) - 1;
             } else {
                 alert("❌ Неверный ввод! Можно ввести только число 1, 2 или 3. Попробуй ещё раз. Очки не снимаются.");
-                // НЕ забираем очки!
+                // НЕ забираем очки
             }
         }
     }
@@ -477,7 +490,6 @@
     function showQuestion(cell) {
         const q = cell.action;
         let userChoice = askQuestionSync(q.text, q.options);
-        // userChoice теперь ВСЕГДА 0,1,2 (никогда -1)
         if(userChoice === q.correct) {
             score += q.reward;
             gameMessage = `✅ Верно! +${q.reward} очков!`;
