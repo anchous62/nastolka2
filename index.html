@@ -129,6 +129,7 @@
             position: absolute;
             top: 2px;
             left: 3px;
+            z-index: 1;
         }
         .player-marker {
             width: 24px;
@@ -139,6 +140,7 @@
             right: -3px;
             filter: drop-shadow(1px 1px 2px black);
             border-radius: 50%;
+            z-index: 2;
         }
         .player-marker::before {
             content: "🧑";
@@ -212,11 +214,9 @@
             .stats { font-size: 0.75rem; }
             button { font-size: 0.75rem; padding: 5px 10px; }
             .message { font-size: 0.65rem; max-width: 130px; }
-            .cell div:last-child { font-size: 1rem !important; margin-top: 16px !important; }
         }
         @media (max-width: 450px) {
             .cell { font-size: 0.5rem; }
-            .cell div:last-child { font-size: 0.9rem !important; margin-top: 14px !important; }
             .board { gap: 2px; }
             .cell-number { font-size: 0.4rem; top: 1px; left: 2px; }
         }
@@ -404,28 +404,36 @@
             const div = document.createElement("div");
             div.className = "cell";
             div.setAttribute("data-type", cell.type);
+            
             let imgMap = { question:"question.jpg", trap:"trap.jpg", bonus:"bonus.jpg", finish:"finish.jpg", normal:"cell_normal.jpg" };
             let imgFile = imgMap[cell.type];
-            if(imgFile) div.style.backgroundImage = `url('images/${imgFile}')`;
-            div.style.backgroundSize = "26px 26px";
-            div.style.backgroundRepeat = "no-repeat";
-            div.style.backgroundPosition = "center 22%";
+            if(imgFile) {
+                div.style.backgroundImage = `url('images/${imgFile}')`;
+                div.style.backgroundSize = "26px 26px";
+                div.style.backgroundRepeat = "no-repeat";
+                div.style.backgroundPosition = "center 22%";
+            }
             
             const numSpan = document.createElement("div");
             numSpan.className = "cell-number";
             numSpan.innerText = cell.id;
             div.appendChild(numSpan);
             
-            let emoji = "⬜";
-            if(cell.type === "question") emoji = "❓";
-            else if(cell.type === "trap") emoji = "⚠️";
-            else if(cell.type === "bonus") emoji = "✨";
-            else if(cell.type === "finish") emoji = "🏁";
-            const iconSpan = document.createElement("div");
-            iconSpan.innerText = emoji;
-            iconSpan.style.fontSize = "1.1rem";
-            iconSpan.style.marginTop = "18px";
-            div.appendChild(iconSpan);
+            // ТОЛЬКО для вопросов, ловушек, бонусов и финиша показываем эмодзи
+            // Обычные клетки — пустые (без смайликов)
+            if (cell.type !== "normal") {
+                let emoji = "";
+                if(cell.type === "question") emoji = "❓";
+                else if(cell.type === "trap") emoji = "⚠️";
+                else if(cell.type === "bonus") emoji = "✨";
+                else if(cell.type === "finish") emoji = "🏁";
+                
+                const iconSpan = document.createElement("div");
+                iconSpan.innerText = emoji;
+                iconSpan.style.fontSize = "1.1rem";
+                iconSpan.style.marginTop = "18px";
+                div.appendChild(iconSpan);
+            }
             
             if(cell.id === currentPosition && gameActive) {
                 const playerDiv = document.createElement("div");
@@ -446,24 +454,22 @@
         renderBoard();
     }
 
-    // ТОЛЬКО 1,2,3 - иначе штраф
+    // НЕ ЗАБИРАЕМ ОЧКИ при неверном вводе — только просим ввести правильно
     function askQuestionSync(question, options) {
         while(true) {
             let answer = prompt(`${question}\n\n1️⃣ ${options[0]}\n2️⃣ ${options[1]}\n3️⃣ ${options[2]}\n\n👉 Введи номер ответа (1, 2 или 3):`);
             
             if(answer === null) {
-                alert("❌ Некорректный ввод! Можно только 1, 2 или 3. Получаешь штраф -5 очков!");
-                score = Math.max(-999, score - 5);
-                return -1;
+                alert("❌ Нужно выбрать вариант ответа! Пожалуйста, введи 1, 2 или 3.");
+                continue;
             }
             
             answer = answer.trim();
             if(answer === "1" || answer === "2" || answer === "3") {
                 return parseInt(answer) - 1;
             } else {
-                alert("❌ Неверный ввод! Можно только число 1, 2 или 3. Получаешь штраф -5 очков!");
-                score = Math.max(-999, score - 5);
-                updateUI();
+                alert("❌ Неверный ввод! Можно ввести только число 1, 2 или 3. Попробуй ещё раз. Очки не снимаются.");
+                // НЕ забираем очки!
             }
         }
     }
@@ -471,10 +477,7 @@
     function showQuestion(cell) {
         const q = cell.action;
         let userChoice = askQuestionSync(q.text, q.options);
-        if(userChoice === -1) {
-            gameMessage = `⚠️ Штраф за неверный ввод! -5 очков.`;
-            return true;
-        }
+        // userChoice теперь ВСЕГДА 0,1,2 (никогда -1)
         if(userChoice === q.correct) {
             score += q.reward;
             gameMessage = `✅ Верно! +${q.reward} очков!`;
@@ -633,7 +636,7 @@
                 <h2>📜 ПРАВИЛА</h2>
                 <div class="rules-list">
                     <p>🎲 Дойди до финиша (клетка 40).</p>
-                    <p>🎲 На вопросы отвечай ТОЛЬКО 1,2,3. Иначе штраф!</p>
+                    <p>🎲 На вопросы отвечай ТОЛЬКО 1,2,3.</p>
                     <p>⚠️ Ловушки отбрасывают назад.</p>
                     <p>✨ Бонусы дают доп. ход, очки или движение вперёд.</p>
                     <p><strong>😡 Если финишируешь с минусом — получишь нагоняй!</strong></p>
