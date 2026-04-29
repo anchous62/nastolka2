@@ -17,9 +17,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 8px;
         }
-        /* Главное меню */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -35,53 +34,51 @@
         }
         .menu-card {
             background: #fef0cf;
-            padding: 20px 20px;
-            border-radius: 60px 30px 60px 30px;
+            padding: 18px 16px;
+            border-radius: 50px 25px 50px 25px;
             text-align: center;
             box-shadow: 0 25px 40px rgba(0,0,0,0.5);
             border: 4px solid #ffcd94;
-            max-width: 450px;
+            max-width: 400px;
             width: 90%;
-            margin: 15px;
+            margin: 10px;
         }
         .menu-card h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin: 0 0 5px 0;
             color: #b45f2b;
             text-shadow: 2px 2px 0 #ffdfa5;
         }
         .menu-card p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #3c2a1f;
             margin: 5px 0;
         }
         .menu-buttons {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 18px;
         }
         .menu-btn {
             background: #ffb347;
             border: none;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            padding: 12px 20px;
-            border-radius: 60px;
+            padding: 10px 18px;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 0 #7a4316;
+            box-shadow: 0 3px 0 #7a4316;
             transition: 0.05s linear;
         }
         .menu-btn:active {
             transform: translateY(2px);
-            box-shadow: 0 1px 0 #7a4316;
         }
         .menu-btn.secondary {
             background: #6c8b5e;
-            box-shadow: 0 4px 0 #3a5530;
+            box-shadow: 0 3px 0 #3a5530;
             color: white;
         }
-        /* Игровой интерфейс */
         .game-wrapper {
             display: none;
             width: 100%;
@@ -89,90 +86,90 @@
         }
         .game-container {
             background: #f5e7d3;
-            border-radius: 30px;
-            padding: 10px;
+            border-radius: 25px;
+            padding: 8px;
             box-shadow: 0 20px 35px rgba(0,0,0,0.4);
         }
         .board {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
             background-color: #faf0e1;
-            border-radius: 20px;
-            padding: 8px;
-            gap: 6px;
-            border: 3px solid #c9a87b;
+            border-radius: 16px;
+            padding: 5px;
+            gap: 4px;
+            border: 2px solid #c9a87b;
         }
         .cell {
             aspect-ratio: 1 / 1;
-            border-radius: 14px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 0.65rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 0.55rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e7cfa1;
             position: relative;
-            background-size: 32px 32px;
+            background-size: 26px 26px;
             background-repeat: no-repeat;
-            background-position: center 25%;
+            background-position: center 20%;
         }
-        .cell[data-type="question"] { background-color: #fff3cf; border-left: 5px solid #f4a100; }
-        .cell[data-type="trap"] { background-color: #ffe0e0; border-left: 5px solid #d32f2f; }
-        .cell[data-type="bonus"] { background-color: #d9f0ff; border-left: 5px solid #2e7eb0; }
-        .cell[data-type="finish"] { background-color: #e8f0c0; border-left: 5px solid gold; }
+        .cell[data-type="question"] { background-color: #fff3cf; border-left: 4px solid #f4a100; }
+        .cell[data-type="trap"] { background-color: #ffe0e0; border-left: 4px solid #d32f2f; }
+        .cell[data-type="bonus"] { background-color: #d9f0ff; border-left: 4px solid #2e7eb0; }
+        .cell[data-type="finish"] { background-color: #e8f0c0; border-left: 4px solid gold; }
         
         .cell-number {
-            font-size: 0.6rem;
-            background: rgba(0,0,0,0.65);
+            font-size: 0.5rem;
+            background: rgba(0,0,0,0.7);
             color: white;
-            padding: 1px 5px;
-            border-radius: 20px;
+            padding: 1px 4px;
+            border-radius: 15px;
             position: absolute;
-            top: 3px;
-            left: 4px;
+            top: 2px;
+            left: 3px;
         }
         .player-marker {
-            width: 30px;
-            height: 30px;
-            background: url('images/player.png') no-repeat center/contain;
+            width: 24px;
+            height: 24px;
+            background: url('images/player.jpg') no-repeat center/contain;
             position: absolute;
-            bottom: -4px;
-            right: -4px;
+            bottom: -3px;
+            right: -3px;
             filter: drop-shadow(1px 1px 2px black);
             border-radius: 50%;
         }
         .player-marker::before {
             content: "🧑";
-            font-size: 1.4rem;
+            font-size: 1rem;
             position: absolute;
         }
         .info-panel {
-            margin-top: 15px;
+            margin-top: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
             background: #2c1c0c;
-            padding: 10px 15px;
-            border-radius: 50px;
+            padding: 8px 12px;
+            border-radius: 40px;
             color: #f9e2b7;
         }
         .stats {
             background: #00000066;
-            padding: 5px 14px;
-            border-radius: 40px;
-            font-size: 1rem;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.85rem;
             font-weight: bold;
         }
         button {
             background: #ffcd7e;
             border: none;
-            font-size: 1rem;
-            padding: 8px 16px;
-            border-radius: 40px;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 35px;
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 3px 0 #b97f2e;
@@ -180,48 +177,48 @@
         }
         button:active {
             transform: translateY(2px);
-            box-shadow: 0 1px 0 #b97f2e;
         }
         .dice-area {
             background: white;
-            border-radius: 20px;
-            padding: 4px 12px;
+            border-radius: 18px;
+            padding: 3px 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .dice-img {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: #ddd;
-            border-radius: 14px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         .message {
             background: #f2e1b0;
-            padding: 6px 12px;
-            border-radius: 30px;
+            padding: 4px 10px;
+            border-radius: 25px;
             color: #3b2a1f;
-            max-width: 200px;
-            font-size: 0.8rem;
+            max-width: 180px;
+            font-size: 0.7rem;
         }
         @media (max-width: 550px) {
-            .board { gap: 4px; padding: 6px; }
-            .cell-number { font-size: 0.5rem; top: 2px; left: 3px; }
-            .player-marker { width: 24px; height: 24px; }
-            .dice-img { width: 40px; height: 40px; font-size: 1.8rem; }
-            .stats { font-size: 0.85rem; padding: 4px 10px; }
-            button { font-size: 0.8rem; padding: 6px 12px; }
-            .message { font-size: 0.7rem; max-width: 150px; }
-            .info-panel { gap: 6px; }
+            .board { gap: 3px; padding: 4px; }
+            .cell-number { font-size: 0.45rem; }
+            .player-marker { width: 20px; height: 20px; }
+            .dice-img { width: 35px; height: 35px; font-size: 1.5rem; }
+            .stats { font-size: 0.75rem; }
+            button { font-size: 0.75rem; padding: 5px 10px; }
+            .message { font-size: 0.65rem; max-width: 130px; }
+            .cell div:last-child { font-size: 1rem !important; margin-top: 16px !important; }
         }
         @media (max-width: 450px) {
-            .cell { font-size: 0.55rem; }
-            .cell div:last-child { font-size: 1.2rem !important; margin-top: 20px !important; }
-            .board { gap: 3px; }
+            .cell { font-size: 0.5rem; }
+            .cell div:last-child { font-size: 0.9rem !important; margin-top: 14px !important; }
+            .board { gap: 2px; }
+            .cell-number { font-size: 0.4rem; top: 1px; left: 2px; }
         }
         .modal-overlay {
             position: fixed;
@@ -229,7 +226,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -237,26 +234,25 @@
         }
         .modal-content {
             background: #fef0cf;
-            padding: 20px;
-            border-radius: 30px;
+            padding: 18px;
+            border-radius: 25px;
             max-width: 90%;
             max-height: 80%;
             overflow-y: auto;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .rules-list {
             text-align: left;
-            line-height: 1.5;
+            line-height: 1.4;
+            font-size: 0.8rem;
         }
         .close-modal {
-            margin-top: 15px;
-            background: #ffb347;
+            margin-top: 12px;
         }
     </style>
 </head>
 <body>
 
-<!-- ГЛАВНОЕ МЕНЮ -->
 <div id="mainMenu" class="menu-overlay">
     <div class="menu-card">
         <h1>🛡️ БЕЗОПАСНЫЙ<br>МАРШРУТ</h1>
@@ -268,7 +264,6 @@
     </div>
 </div>
 
-<!-- ИГРА -->
 <div id="gameWrapper" class="game-wrapper">
     <div class="game-container">
         <div class="board" id="board"></div>
@@ -285,7 +280,6 @@
 </div>
 
 <script>
-    // ========== КАРТОЧКИ (ситуации, ловушки, бонусы) ==========
     const BOARD_SIZE = 40;
     const FINISH_POS = 40;
 
@@ -294,7 +288,6 @@
         for (let i = 1; i <= BOARD_SIZE; i++) {
             let type = "normal";
             let action = null;
-            // СИТУАЦИИ (жёлтые)
             if (i === 3) { type = "question"; action = { 
                 text: "В соцсети незнакомец представляется агентом модельного агентства, просит откровенные фото для портфолио.", 
                 options: ["Пришлю, это шанс!", "Попрошу официальный договор", "Игнорирую и блокирую, скажу родителям"], 
@@ -345,7 +338,6 @@
                 options: ["Заберу себе", "Позвоню родственникам из контактов", "Отнесу в полицию/находку"], 
                 correct: 2, reward: 15 
             };}
-            // ЛОВУШКИ (красные)
             if (i === 12) { type = "trap"; action = { 
                 effect: "moveAndSkip", targetPos: 7, skip: true, msg: "❌ Ты решил заработать легкие деньги. Поймали на мелкой краже. Вернись на клетку 7 и пропусти ход!" 
             };}
@@ -358,7 +350,6 @@
             if (i === 33) { type = "trap"; action = { 
                 effect: "skipTurns", skipCount: 2, msg: "⏳ Общался с подозрительными личностями. Пропусти 2 хода!" 
             };}
-            // БОНУСЫ (синие)
             if (i === 8) { type = "bonus"; action = { 
                 effect: "extraRoll", msg: "📚 Ты прочитал статью о безопасности! Брось кубик ещё раз!" 
             };}
@@ -395,16 +386,16 @@
     function setDiceImage(roll) {
         const img = new Image();
         img.onload = () => { 
-            diceDisplay.style.background = `url('images/dice_${roll}.png') center/contain no-repeat`; 
+            diceDisplay.style.background = `url('images/dice_${roll}.jpg') center/contain no-repeat`; 
             diceDisplay.style.backgroundColor = "white"; 
             diceDisplay.innerText = ""; 
         };
         img.onerror = () => { 
             diceDisplay.style.background = ""; 
             diceDisplay.innerText = ["⚀","⚁","⚂","⚃","⚄","⚅"][roll-1]; 
-            diceDisplay.style.fontSize = "2rem"; 
+            diceDisplay.style.fontSize = "1.8rem"; 
         };
-        img.src = `images/dice_${roll}.png`;
+        img.src = `images/dice_${roll}.jpg`;
     }
 
     function renderBoard() {
@@ -413,12 +404,12 @@
             const div = document.createElement("div");
             div.className = "cell";
             div.setAttribute("data-type", cell.type);
-            let imgMap = { question:"question.png", trap:"trap.png", bonus:"bonus.png", finish:"finish.png", normal:"cell_normal.png" };
+            let imgMap = { question:"question.jpg", trap:"trap.jpg", bonus:"bonus.jpg", finish:"finish.jpg", normal:"cell_normal.jpg" };
             let imgFile = imgMap[cell.type];
             if(imgFile) div.style.backgroundImage = `url('images/${imgFile}')`;
-            div.style.backgroundSize = "32px 32px";
+            div.style.backgroundSize = "26px 26px";
             div.style.backgroundRepeat = "no-repeat";
-            div.style.backgroundPosition = "center 25%";
+            div.style.backgroundPosition = "center 22%";
             
             const numSpan = document.createElement("div");
             numSpan.className = "cell-number";
@@ -432,17 +423,17 @@
             else if(cell.type === "finish") emoji = "🏁";
             const iconSpan = document.createElement("div");
             iconSpan.innerText = emoji;
-            iconSpan.style.fontSize = "1.4rem";
-            iconSpan.style.marginTop = "22px";
+            iconSpan.style.fontSize = "1.1rem";
+            iconSpan.style.marginTop = "18px";
             div.appendChild(iconSpan);
             
             if(cell.id === currentPosition && gameActive) {
                 const playerDiv = document.createElement("div");
                 playerDiv.className = "player-marker";
                 const testImg = new Image();
-                testImg.onload = () => playerDiv.style.background = `url('images/player.png') center/contain no-repeat`;
+                testImg.onload = () => playerDiv.style.background = `url('images/player.jpg') center/contain no-repeat`;
                 testImg.onerror = () => playerDiv.style.background = "none";
-                testImg.src = "images/player.png";
+                testImg.src = "images/player.jpg";
                 div.appendChild(playerDiv);
             }
             boardDiv.appendChild(div);
@@ -455,19 +446,24 @@
         renderBoard();
     }
 
-    // Обязательный ответ на вопрос (цикл до правильного ввода)
+    // ТОЛЬКО 1,2,3 - иначе штраф
     function askQuestionSync(question, options) {
         while(true) {
             let answer = prompt(`${question}\n\n1️⃣ ${options[0]}\n2️⃣ ${options[1]}\n3️⃣ ${options[2]}\n\n👉 Введи номер ответа (1, 2 или 3):`);
+            
             if(answer === null) {
-                alert("❌ Ответ обязателен! Пожалуйста, выбери вариант 1, 2 или 3.");
-                continue;
+                alert("❌ Некорректный ввод! Можно только 1, 2 или 3. Получаешь штраф -5 очков!");
+                score = Math.max(-999, score - 5);
+                return -1;
             }
-            let idx = parseInt(answer) - 1;
-            if(idx >= 0 && idx <= 2) {
-                return idx;
+            
+            answer = answer.trim();
+            if(answer === "1" || answer === "2" || answer === "3") {
+                return parseInt(answer) - 1;
             } else {
-                alert("❌ Некорректный ввод! Введи число 1, 2 или 3.");
+                alert("❌ Неверный ввод! Можно только число 1, 2 или 3. Получаешь штраф -5 очков!");
+                score = Math.max(-999, score - 5);
+                updateUI();
             }
         }
     }
@@ -475,12 +471,16 @@
     function showQuestion(cell) {
         const q = cell.action;
         let userChoice = askQuestionSync(q.text, q.options);
+        if(userChoice === -1) {
+            gameMessage = `⚠️ Штраф за неверный ввод! -5 очков.`;
+            return true;
+        }
         if(userChoice === q.correct) {
             score += q.reward;
             gameMessage = `✅ Верно! +${q.reward} очков!`;
             alert(`✅ Правильно! +${q.reward} очков.`);
         } else {
-            score = Math.max(0, score - 5);
+            score = score - 5;
             gameMessage = `❌ Неверно! Правильный ответ: ${q.options[q.correct]}. -5 очков.`;
             alert(`❌ Ошибка! Правильный ответ: ${q.options[q.correct]}. -5 очков.`);
         }
@@ -594,8 +594,13 @@
 
     function finishGame() {
         gameActive = false;
-        msgDiv.innerText = `🏆 ПОБЕДА! Финиш! Очки: ${score}. Нажми "В меню" для новой игры 🏆`;
-        alert(`🏁 Ты победил! Итоговые очки: ${score}. Молодец!`);
+        if(score < 0) {
+            msgDiv.innerText = `😞 ФИНИШ! Очки: ${score}. ПОЗОР! Ты принял кучу неправильных решений. Играй лучше в следующий раз! 😞`;
+            alert(`😤😤😤 ФИНИШ с ${score} очками! Это позор! Ты вообще слушал вопросы? Школа безопасности не для тебя... Иди учи матчасть! 😤😤😤`);
+        } else {
+            msgDiv.innerText = `🏆 ПОБЕДА! Финиш! Очки: ${score}. Молодец! 🏆`;
+            alert(`🏆 Поздравляю! Ты финишировал с ${score} очками. Отличная работа! 🏆`);
+        }
         renderBoard();
     }
 
@@ -620,30 +625,18 @@
         }
     }
 
-    // ПРАВИЛА
     function showRules() {
         const rulesModal = document.createElement("div");
         rulesModal.className = "modal-overlay";
         rulesModal.innerHTML = `
             <div class="modal-content">
-                <h2>📜 ПРАВИЛА ИГРЫ</h2>
+                <h2>📜 ПРАВИЛА</h2>
                 <div class="rules-list">
-                    <p>🎲 <strong>Цель:</strong> Добраться до финиша (клетка 40), набрав как можно больше очков.</p>
-                    <p>🎲 <strong>Как играть:</strong><br>
-                    - Нажимай «Бросок кубика» — выпадает число от 1 до 6.<br>
-                    - Твоя фишка передвигается на выпавшее количество клеток.<br>
-                    - Отвечай на вопросы о безопасности — за правильные ответы получаешь очки.<br>
-                    - Ошибка на вопросе = штраф −5 очков.</p>
-                    <p>⚠️ <strong>Ловушки (красные клетки):</strong><br>
-                    - Клетка 12: возврат на 7 + пропуск хода<br>
-                    - Клетка 16: возврат на 10<br>
-                    - Клетка 25: возврат на старт (1)<br>
-                    - Клетка 33: пропуск 2 ходов</p>
-                    <p>✨ <strong>Бонусы (синие клетки):</strong><br>
-                    - Клетка 8: дополнительный бросок<br>
-                    - Клетка 20: +1 очко<br>
-                    - Клетка 30: +3 клетки вперёд</p>
-                    <p>🏆 <strong>Победа:</strong> При достижении клетки 40 игра завершается. Чем больше очков — тем лучше!</p>
+                    <p>🎲 Дойди до финиша (клетка 40).</p>
+                    <p>🎲 На вопросы отвечай ТОЛЬКО 1,2,3. Иначе штраф!</p>
+                    <p>⚠️ Ловушки отбрасывают назад.</p>
+                    <p>✨ Бонусы дают доп. ход, очки или движение вперёд.</p>
+                    <p><strong>😡 Если финишируешь с минусом — получишь нагоняй!</strong></p>
                 </div>
                 <button class="close-modal">Закрыть</button>
             </div>
@@ -653,7 +646,6 @@
         rulesModal.onclick = (e) => { if(e.target === rulesModal) rulesModal.remove(); };
     }
 
-    // Обработчики кнопок
     document.getElementById("startGameBtn").addEventListener("click", () => {
         resetGameState();
         mainMenuDiv.style.display = "none";
